@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { useDispatch } from 'react-redux';
 
+import { getConfig } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import {
   Button, Icon, IconButton, SearchField,
@@ -17,8 +18,10 @@ function PostActionsBar({
   inContext,
 }) {
   const dispatch = useDispatch();
-  // TODO: Use a postMessage based API to close the in-context discussion here.
-  const handleCloseInContext = () => null;
+  const handleCloseInContext = () => {
+    // eslint-disable-next-line no-unused-expressions
+    window?.parent?.postMessage({ type: 'learning.events.sidebar.close' }, getConfig().LEARNING_BASE_URL);
+  };
   return (
     <div className="d-flex justify-content-end py-1 flex-grow-1">
       {!inContext && (

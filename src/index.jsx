@@ -41,6 +41,7 @@ initialize({
   handlers: {
     config() {
       mergeConfig({
+        LEARNING_BASE_URL: process.env.LEARNING_BASE_URL,
         POST_MARK_AS_READ_DELAY: process.env.POST_MARK_AS_READ_DELAY || 2000,
       });
     },
