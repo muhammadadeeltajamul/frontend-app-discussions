@@ -53,7 +53,7 @@ function PostFooter({
             />
           )}
       </OverlayTrigger>
-      {preview
+      {preview && post.commentCount > 1 //Backend returns commentCount 1 if their is no comment of post
         && (
           <>
             <Icon src={QuestionAnswer} className="mx-2 my-0" />
